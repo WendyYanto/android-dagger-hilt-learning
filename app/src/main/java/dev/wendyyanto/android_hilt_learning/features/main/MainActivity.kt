@@ -13,7 +13,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var timeUtil: TimeUtil
+    lateinit var timeUtil: dagger.Lazy<TimeUtil>
 
     private lateinit var textView: TextView
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         textView = findViewById(R.id.tv_hello_world)
 
         textView.setOnClickListener {
-            Toast.makeText(this, "Generated from timeUtil: ${timeUtil.getCurrentTime()}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Generated from timeUtil: ${timeUtil.get().getCurrentTime()}", Toast.LENGTH_SHORT).show()
         }
     }
 }
