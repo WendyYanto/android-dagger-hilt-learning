@@ -2,14 +2,14 @@ package dev.wendyyanto.android_hilt_learning.features.main.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
 import dev.wendyyanto.android_hilt_learning.databinding.ActivityMainBinding
 import dev.wendyyanto.android_hilt_learning.features.main.viewmodel.MainViewModel
-import dev.wendyyanto.android_hilt_learning.utils.contract.TimeUtil
-import dev.wendyyanto.android_hilt_learning.validator.contract.UserValidator
+import dev.wendyyanto.android_hilt_learning.features.main.utils.contract.TimeUtil
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -46,9 +46,12 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewModel.isLoggedIn.observe(this, Observer {
-            Toast.makeText(this, "Is logged in", Toast.LENGTH_SHORT).show()
-            viewBinding.aetName.isEnabled = false
-            viewBinding.aetPassword.isEnabled = false
+            if (it) {
+                Toast.makeText(this, "Is logged in", Toast.LENGTH_SHORT).show()
+                viewBinding.aetName.isEnabled = false
+                viewBinding.aetPassword.isEnabled = false
+                viewBinding.bSubmit.visibility = View.GONE
+            }
         })
     }
 

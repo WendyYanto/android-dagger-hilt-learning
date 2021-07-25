@@ -1,6 +1,6 @@
-package dev.wendyyanto.android_hilt_learning.utils.impl
+package dev.wendyyanto.android_hilt_learning.features.main.utils.impl
 
-import dev.wendyyanto.android_hilt_learning.utils.contract.TimeUtil
+import dev.wendyyanto.android_hilt_learning.features.main.utils.contract.TimeUtil
 import javax.inject.Inject
 
 class TimeUtilImpl @Inject constructor(): TimeUtil {

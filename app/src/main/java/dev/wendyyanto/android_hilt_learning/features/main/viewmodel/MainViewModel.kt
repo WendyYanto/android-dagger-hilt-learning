@@ -25,7 +25,7 @@ class MainViewModel @Inject constructor(
     private val _userSaved = MutableLiveData<Boolean>()
 
     val isLoggedIn: LiveData<Boolean> = MutableLiveData<Boolean>().apply {
-        value = false
+        value = userLocalRepository.isLoggedIn()
     }
 
     fun validateUser(name: String, password: String) {
