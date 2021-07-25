@@ -1,5 +1,6 @@
 package dev.wendyyanto.android_hilt_learning.features.main.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +14,10 @@ class MainViewModel @Inject constructor(
     private val userValidator: UserValidator,
     private val userLocalRepository: UserLocalRepositoryImpl
 ) : ViewModel() {
+
+    init {
+        Log.v("DaggerHilt", "MainViewModel")
+    }
 
     val isUserValid: LiveData<Boolean>
         get() = _isUserValid

@@ -2,6 +2,7 @@ package dev.wendyyanto.android_hilt_learning.features.main.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -16,7 +17,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var timeUtil: dagger.Lazy<TimeUtil>
+    lateinit var timeUtil: TimeUtil
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        Log.v("DaggerHilt", "MainActivity")
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupInteraction() {
         viewBinding.tvHelloWorld.setOnClickListener {
-            Toast.makeText(this, "Generated from timeUtil: ${timeUtil.get().getCurrentTime()}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Generated from timeUtil: ${timeUtil.getCurrentTime()}", Toast.LENGTH_SHORT).show()
         }
 
         viewBinding.bSubmit.setOnClickListener {
