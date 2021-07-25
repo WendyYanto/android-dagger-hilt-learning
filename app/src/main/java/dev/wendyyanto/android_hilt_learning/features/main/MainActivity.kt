@@ -1,12 +1,12 @@
-package dev.wendyyanto.android_hilt_learning
+package dev.wendyyanto.android_hilt_learning.features.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
+import dev.wendyyanto.android_hilt_learning.R
 import dev.wendyyanto.android_hilt_learning.utils.contract.TimeUtil
-import dev.wendyyanto.android_hilt_learning.utils.impl.TimeUtilImpl
 import javax.inject.Inject
 
 @AndroidEntryPoint
