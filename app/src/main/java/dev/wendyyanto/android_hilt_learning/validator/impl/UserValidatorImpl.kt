@@ -6,7 +6,7 @@ import javax.inject.Inject
 class UserValidatorImpl @Inject constructor(): UserValidator {
 
     override fun isUserValid(name: String, password: String): Boolean {
-        return isNameValid(name) || isPasswordValid(password)
+        return isNameValid(name) && isPasswordValid(password)
     }
 
     private fun isNameValid(name: String): Boolean {
