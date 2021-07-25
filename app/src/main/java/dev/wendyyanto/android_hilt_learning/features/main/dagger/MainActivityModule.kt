@@ -1,4 +1,4 @@
-package dev.wendyyanto.android_hilt_learning.dagger
+package dev.wendyyanto.android_hilt_learning.features.main.dagger
 
 import dagger.Binds
 import dagger.Module
@@ -9,7 +9,7 @@ import dev.wendyyanto.android_hilt_learning.utils.impl.TimeUtilImpl
 
 @Module
 @InstallIn(ActivityComponent::class)
-abstract class UtilModule {
+abstract class MainActivityModule {
 
     @Binds
     abstract fun bindsTimeUtil(timeUtilImpl: TimeUtilImpl): TimeUtil

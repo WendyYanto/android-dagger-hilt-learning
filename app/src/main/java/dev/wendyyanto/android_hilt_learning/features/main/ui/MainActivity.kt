@@ -35,10 +35,20 @@ class MainActivity : AppCompatActivity() {
     private fun setupObserver() {
         viewModel.isUserValid.observe(this, Observer { value ->
             if (value) {
-                Toast.makeText(this, "Name or password is valid", Toast.LENGTH_SHORT).show()
+                viewModel.login(getName(), getPassword())
             } else {
                 Toast.makeText(this, "Name or password is invalid", Toast.LENGTH_SHORT).show()
             }
+        })
+
+        viewModel.userSaved.observe(this, Observer {
+            Toast.makeText(this, "User data saved", Toast.LENGTH_SHORT).show()
+        })
+
+        viewModel.isLoggedIn.observe(this, Observer {
+            Toast.makeText(this, "Is logged in", Toast.LENGTH_SHORT).show()
+            viewBinding.aetName.isEnabled = false
+            viewBinding.aetPassword.isEnabled = false
         })
     }
 
@@ -53,9 +63,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun submitUser() {
-        val name = viewBinding.aetName.text.toString()
-        val password = viewBinding.aetPassword.text.toString()
-
-        viewModel.validateUser(name, password)
+        viewModel.validateUser(getName(), getPassword())
     }
+
+    private fun getName() = viewBinding.aetName.text.toString()
+
+    private fun getPassword() = viewBinding.aetPassword.text.toString()
 }
